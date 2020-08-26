@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Veterinary Clinic</string>
+
+    <string name="clinic">CLINICĂ</string>
+    <string name="veterinary">VETERINARĂ</string>
+    <string name="welcome">Bine ați venit!</string>
+
+    <string name="login">Autentificare</string>
+    <string name="signup">Înregistrare</string>
+
 </resources>
