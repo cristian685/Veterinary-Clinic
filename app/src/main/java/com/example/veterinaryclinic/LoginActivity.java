@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(!checkIfAnyAccountDetailIsEmpty(userNameEditText.getText().toString(),passwordEditText.getText().toString())){
-                    
+
                 }
             }
         });
