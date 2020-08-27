@@ -6,6 +6,17 @@
     <string name="welcome">Bine ați venit!</string>
 
     <string name="login">Autentificare</string>
-    <string name="signup">Înregistrare</string>
+    <string name="sign_up">Înregistrare</string>
+    <string name="connect">Conectare</string>
+
+    <string name="user_name">Numele de utilizator</string>
+    <string name="password">Parola</string>
+
+    <string name="empty_message">Acest câmp nu poate să fie gol.</string>
+
+
+    <string name="incorrect_message">Datele introduse de dumneavoastra nu sunt corecte.</string>
+    <string name="try_again_message">Vă rugăm să reîncercați !</string>
+
 
 </resources>
