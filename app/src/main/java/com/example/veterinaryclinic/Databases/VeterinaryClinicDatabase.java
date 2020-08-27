@@ -5,7 +5,7 @@ import android.content.Context;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.example.veterinaryclinic.DataAccessOperations.AnimalDao;
+import com.example.veterinaryclinic.DataAccessObjects.AnimalDao;
 
 public abstract class VeterinaryClinicDatabase extends RoomDatabase {
 
