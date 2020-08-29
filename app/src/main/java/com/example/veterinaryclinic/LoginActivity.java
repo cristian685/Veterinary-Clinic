@@ -1,27 +1,50 @@
 package com.example.veterinaryclinic;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.veterinaryclinic.Models.Animal;
+import com.example.veterinaryclinic.ViewModels.AnimalViewModel;
+
+import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
+    // CONSTANTS
     private static final String EMPTY_STRING = "";
 
-    TextView emptyUserNameTextView;
-    TextView emptyPasswordTextView;
-    TextView incorrectTextView;
-    TextView tryAgainTextView;
+    private TextView emptyUserNameTextView;
+    private TextView emptyPasswordTextView;
+    private TextView incorrectTextView;
+    private TextView tryAgainTextView;
 
+    // view model
+    private AnimalViewModel animalViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        // instantiating view model for the current activity
+        animalViewModel = new ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(AnimalViewModel.class);
+
+        // creating an observable for our list of animals from database
+        animalViewModel.getAllAnimals().observe(this, new Observer<List<Animal>>() {
+            @Override
+            public void onChanged(List<Animal> animals) {
+                Toast.makeText(LoginActivity.this, "Merge", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         final EditText userNameEditText = findViewById(R.id.userNameEditText);
         final EditText passwordEditText = findViewById(R.id.passwordEditText);

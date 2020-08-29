@@ -6,7 +6,7 @@ import android.os.AsyncTask;
 import androidx.lifecycle.LiveData;
 
 import com.example.veterinaryclinic.DataAccessObjects.AnimalDao;
-import com.example.veterinaryclinic.DatabaseEntities.Animal;
+import com.example.veterinaryclinic.Models.Animal;
 import com.example.veterinaryclinic.Databases.VeterinaryClinicDatabase;
 
 import java.util.List;

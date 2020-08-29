@@ -1,15 +1,17 @@
 package com.example.veterinaryclinic.DataAccessObjects;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.veterinaryclinic.DatabaseEntities.Animal;
+import com.example.veterinaryclinic.Models.Animal;
 
 import java.util.List;
 
+@Dao
 public interface AnimalDao {
 
     @Insert
