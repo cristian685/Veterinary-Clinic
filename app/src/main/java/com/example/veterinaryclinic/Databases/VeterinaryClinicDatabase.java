@@ -1,9 +1,12 @@
 package com.example.veterinaryclinic.Databases;
 
 import android.content.Context;
+import android.os.AsyncTask;
 
+import androidx.annotation.NonNull;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.veterinaryclinic.DataAccessObjects.AnimalDao;
 
@@ -19,9 +22,32 @@ public abstract class VeterinaryClinicDatabase extends RoomDatabase {
             instance = Room.databaseBuilder(context.getApplicationContext(),
                     VeterinaryClinicDatabase.class, "veterinary_clinic_database").
                     fallbackToDestructiveMigration()
+                    .addCallback(roomCallback)
                     .build();
         }
 
         return instance;
+    }
+
+    private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback() {
+        @Override
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+            super.onCreate(db);
+            new PopulateDatabaseAsyncTask(instance).execute();
+        }
+    };
+
+    private static class PopulateDatabaseAsyncTask extends AsyncTask<Void,Void,Void>{
+
+        private AnimalDao animalDao;
+
+        private PopulateDatabaseAsyncTask(VeterinaryClinicDatabase database){
+            animalDao = database.animalDao();
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            return null;
+        }
     }
 }
