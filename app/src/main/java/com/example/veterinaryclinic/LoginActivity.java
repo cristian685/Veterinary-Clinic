@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         animalViewModel.getAllAnimals().observe(this, new Observer<List<Animal>>() {
             @Override
             public void onChanged(List<Animal> animals) {
-                Toast.makeText(LoginActivity.this, "Merge", Toast.LENGTH_SHORT).show();
+
             }
         });
 
