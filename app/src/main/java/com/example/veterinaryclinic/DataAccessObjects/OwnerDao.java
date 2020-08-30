@@ -7,6 +7,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.example.veterinaryclinic.Models.Animal;
 import com.example.veterinaryclinic.Models.Owner;
 
 import java.util.List;

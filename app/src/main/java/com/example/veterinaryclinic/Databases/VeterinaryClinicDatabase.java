@@ -16,7 +16,7 @@ import com.example.veterinaryclinic.Models.Account;
 import com.example.veterinaryclinic.Models.Animal;
 import com.example.veterinaryclinic.Models.Owner;
 
-@Database(entities = {Animal.class, Account.class, Owner.class}, version = 2)
+@Database(entities = {Animal.class}, version = 1)
 public abstract class VeterinaryClinicDatabase extends RoomDatabase {
 
     private static VeterinaryClinicDatabase instance;
