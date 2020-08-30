@@ -11,8 +11,10 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.veterinaryclinic.DataAccessObjects.AccountDao;
 import com.example.veterinaryclinic.DataAccessObjects.AnimalDao;
+import com.example.veterinaryclinic.DataAccessObjects.OwnerDao;
 import com.example.veterinaryclinic.Models.Account;
 import com.example.veterinaryclinic.Models.Animal;
+import com.example.veterinaryclinic.Models.Owner;
 
 @Database(entities = {Animal.class}, version = 1)
 public abstract class VeterinaryClinicDatabase extends RoomDatabase {
@@ -21,6 +23,7 @@ public abstract class VeterinaryClinicDatabase extends RoomDatabase {
 
     public abstract AnimalDao animalDao();
     public abstract AccountDao accountDao();
+    public abstract OwnerDao ownerDao();
 
     public static synchronized VeterinaryClinicDatabase getInstance(Context context){
 
@@ -47,10 +50,12 @@ public abstract class VeterinaryClinicDatabase extends RoomDatabase {
 
         private AnimalDao animalDao;
         private AccountDao accountDao;
+        private OwnerDao ownerDao;
 
         private PopulateDatabaseAsyncTask(VeterinaryClinicDatabase database){
             animalDao = database.animalDao();
             accountDao = database.accountDao();
+            ownerDao = database.ownerDao();
         }
 
         @Override
