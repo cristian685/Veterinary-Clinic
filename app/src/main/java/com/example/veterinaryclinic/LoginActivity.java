@@ -12,7 +12,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.veterinaryclinic.Models.Account;
 import com.example.veterinaryclinic.Models.Animal;
+import com.example.veterinaryclinic.ViewModels.AccountViewModel;
 import com.example.veterinaryclinic.ViewModels.AnimalViewModel;
 
 import java.util.List;
@@ -27,8 +29,9 @@ public class LoginActivity extends AppCompatActivity {
     private TextView incorrectTextView;
     private TextView tryAgainTextView;
 
-    // view model
+    // view models
     private AnimalViewModel animalViewModel;
+    private AccountViewModel accountViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +39,12 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         // instantiating view model for the current activity
-        animalViewModel = new ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(AnimalViewModel.class);
+        accountViewModel = new ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(AccountViewModel.class);
 
         // creating an observable for our list of animals from database
-        animalViewModel.getAllAnimals().observe(this, new Observer<List<Animal>>() {
+        accountViewModel.getAllAccounts().observe(this, new Observer<List<Account>>() {
             @Override
-            public void onChanged(List<Animal> animals) {
+            public void onChanged(List<Account> accounts) {
 
             }
         });
