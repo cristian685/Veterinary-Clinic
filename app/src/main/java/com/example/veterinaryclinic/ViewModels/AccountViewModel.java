@@ -34,7 +34,7 @@ public class AccountViewModel extends AndroidViewModel {
         repository.delete(account);
     }
 
-    public void deleteAllAccounts(Account account) {
+    public void deleteAllAccounts() {
         repository.deleteAllAccounts();
     }
 

@@ -30,7 +30,6 @@ public class LoginActivity extends AppCompatActivity {
     private TextView tryAgainTextView;
 
     // view models
-    private AnimalViewModel animalViewModel;
     private AccountViewModel accountViewModel;
 
     @Override

@@ -38,7 +38,7 @@ public class OwnerRepository {
         new OwnerRepository.DeleteAllOwnersAsyncTask(ownerDao).execute();
     }
 
-    public LiveData<List<Owner>> getAllAccounts(){
+    public LiveData<List<Owner>> getAllOwners(){
         return allOwners;
     }
 

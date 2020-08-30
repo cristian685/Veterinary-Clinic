@@ -33,7 +33,7 @@ public class AnimalViewModel extends AndroidViewModel {
         repository.delete(animal);
     }
 
-    public void deleteAllNotes(Animal animal) {
+    public void deleteAllAnimals() {
         repository.deleteAllAnimals();
     }
 
