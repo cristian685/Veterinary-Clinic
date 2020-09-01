@@ -1,12 +1,16 @@
 <resources>
     <string name="app_name">Veterinary Clinic</string>
 
+    <!-- MAIN
+     ACTIVITY STRINGS -->
     <string name="clinic">CLINICĂ</string>
     <string name="veterinary">VETERINARĂ</string>
     <string name="welcome">Bine ați venit!</string>
 
     <string name="login">Autentificare</string>
     <string name="sign_up">Înregistrare</string>
+
+    <!-- LOGIN ACTIVITY STRINGS -->
     <string name="connect">Conectare</string>
 
     <string name="user_name">Numele de utilizator</string>
@@ -17,8 +21,19 @@
 
     <string name="incorrect_message">Datele introduse de dumneavoastra nu sunt corecte.</string>
     <string name="try_again_message">Vă rugăm să reîncercați !</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- SIGN UP ACTIVITY STRINGS -->
+    <string name="account_type">Tipul contului</string>
+
+    <string name="veterinarian">Medic veterinar</string>
+    <string name="owner">Stăpân</string>
+
+    <string name="last_name">Nume</string>
+    <string name="first_name">Prenume</string>
+
+    <string name="email_address">Adresa de email</string>
+    <string name="phone_number">Numar de telefon</string>
+
 
 
 </resources>

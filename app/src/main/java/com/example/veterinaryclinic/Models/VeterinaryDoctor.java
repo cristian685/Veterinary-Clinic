@@ -4,18 +4,21 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "owner_table", foreignKeys = @ForeignKey(entity = Account.class,
+
+@Entity(tableName = "veterinarian_table", foreignKeys = @ForeignKey(entity = Account.class,
         parentColumns = "idAccount",
-        childColumns = "ownerId",
+        childColumns = "veterinaryDoctorId",
         onDelete = ForeignKey.CASCADE))
-public class Owner {
+public class VeterinaryDoctor {
 
     @PrimaryKey(autoGenerate = true)
-    private int ownerId;
+    private int veterinaryDoctorId;
 
     private String firstName;
 
     private String lastName;
+
+    private String specialisation;
 
     private String emailAddress;
 
@@ -25,18 +28,14 @@ public class Owner {
 
     private String registrationDate;
 
-    public Owner(int ownerId, String firstName, String lastName, String emailAddress, String phoneNumber, int idAccount, String registrationDate) {
-        this.ownerId = ownerId;
+    public VeterinaryDoctor(String firstName, String lastName, String specialisation, String emailAddress, String phoneNumber, int idAccount, String registrationDate) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.specialisation = specialisation;
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
         this.idAccount = idAccount;
         this.registrationDate = registrationDate;
-    }
-
-    public int getOwnerId() {
-        return ownerId;
     }
 
     public String getFirstName() {
@@ -45,6 +44,10 @@ public class Owner {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public String getSpecialisation() {
+        return specialisation;
     }
 
     public String getEmailAddress() {
@@ -63,7 +66,7 @@ public class Owner {
         return registrationDate;
     }
 
-    public void setOwnerId(int ownerId) {
-        this.ownerId = ownerId;
+    public void setVeterinaryDoctorId(int veterinaryDoctorId) {
+        this.veterinaryDoctorId = veterinaryDoctorId;
     }
 }
