@@ -38,6 +38,10 @@ public class VeterinaryDoctor {
         this.registrationDate = registrationDate;
     }
 
+    public int getVeterinaryDoctorId() {
+        return veterinaryDoctorId;
+    }
+
     public String getFirstName() {
         return firstName;
     }
