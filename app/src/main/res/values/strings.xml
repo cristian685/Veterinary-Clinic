@@ -13,8 +13,9 @@
     <!-- LOGIN ACTIVITY STRINGS -->
     <string name="connect">Conectare</string>
 
-    <string name="user_name">Numele de utilizator</string>
+    <string name="user_name">Nume de utilizator</string>
     <string name="password">Parola</string>
+    <string name="confirm_password">Confirmați parola</string>
 
     <string name="empty_message">Acest câmp nu poate să fie gol.</string>
 
@@ -30,15 +31,18 @@
         <item>Medic veterinar</item>
         <item>Stăpân</item>
     </string-array>
+
     <string name="veterinarian">Medic veterinar</string>
     <string name="owner">Stăpân</string>
 
-    <string name="last_name">Nume</string>
-    <string name="first_name">Prenume</string>
+    <string name="surname">Nume</string>
+    <string name="name">Prenume</string>
 
     <string name="email_address">Adresa de email</string>
     <string name="phone_number">Numar de telefon</string>
 
+    <string name="specialisation">Specializare</string>
+    <string name="create_account">Creare cont</string>
 
 
 </resources>

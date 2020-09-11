@@ -9,16 +9,54 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Spinner;
 
+import com.example.veterinaryclinic.Adapters.SpinnerAdapter;
 import com.example.veterinaryclinic.R;
+
+import java.util.ArrayList;
 
 
 public class VeterinarianSignUpFragment extends Fragment {
+
+    private static final String VETERINARIAN_STRING = "Medic veterinar";
+    private static final String OWNER_STRING = "Stăpân";
+
+
+    private ArrayList<String> accountTypes;
+    private SpinnerAdapter spinnerAdapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_veterinarian_sign_up,container,false);
+
+        initialiseList();
+
+        Spinner spinner = view.findViewById(R.id.spinner);
+        spinnerAdapter = new SpinnerAdapter(getContext(),accountTypes);
+        spinner.setAdapter(spinnerAdapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String clickedItem = (String) parent.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         return view;
+    }
+
+
+    private void initialiseList(){
+        accountTypes = new ArrayList<>();
+        accountTypes.add(VETERINARIAN_STRING);
+        accountTypes.add(OWNER_STRING);
     }
 }

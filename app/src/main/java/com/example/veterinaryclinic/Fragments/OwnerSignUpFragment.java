@@ -21,8 +21,12 @@ import java.util.ArrayList;
 
 public class OwnerSignUpFragment extends Fragment {
 
+    private static final String VETERINARIAN_STRING = "Medic veterinar";
+    private static final String OWNER_STRING = "Stăpân";
+
     private ArrayList<String> accountTypes;
     private SpinnerAdapter spinnerAdapter;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -51,7 +55,7 @@ public class OwnerSignUpFragment extends Fragment {
 
    private void initialiseList(){
         accountTypes = new ArrayList<>();
-        accountTypes.add("Medic veterinar");
-        accountTypes.add("Stăpân");
+        accountTypes.add(OWNER_STRING);
+        accountTypes.add(VETERINARIAN_STRING);
    }
 }
