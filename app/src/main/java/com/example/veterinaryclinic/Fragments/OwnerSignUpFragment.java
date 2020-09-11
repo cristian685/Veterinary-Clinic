@@ -12,6 +12,8 @@ import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.veterinaryclinic.Adapters.SpinnerAdapter;
 import com.example.veterinaryclinic.R;
@@ -27,6 +29,8 @@ public class OwnerSignUpFragment extends Fragment {
     private ArrayList<String> accountTypes;
     private SpinnerAdapter spinnerAdapter;
 
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,10 +42,20 @@ public class OwnerSignUpFragment extends Fragment {
         spinnerAdapter = new SpinnerAdapter(getContext(),accountTypes);
         spinner.setAdapter(spinnerAdapter);
 
+        FragmentManager fragmentManager = getFragmentManager();
+        final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String clickedItem = (String) parent.getItemAtPosition(position);
+
+                if(clickedItem.equals(VETERINARIAN_STRING)){
+                    Fragment fragment = new VeterinarianSignUpFragment();
+                    fragmentTransaction.replace(R.id.fragment_container,fragment);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                }
             }
 
             @Override

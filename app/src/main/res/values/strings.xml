@@ -26,12 +26,6 @@
     <!-- SIGN UP ACTIVITY STRINGS -->
     <string name="account_type">Tipul contului</string>
 
-
-    <string-array name="accounts_types">
-        <item>Medic veterinar</item>
-        <item>Stăpân</item>
-    </string-array>
-
     <string name="veterinarian">Medic veterinar</string>
     <string name="owner">Stăpân</string>
 
@@ -44,5 +38,8 @@
     <string name="specialisation">Specializare</string>
     <string name="create_account">Creare cont</string>
 
+    <string name="surgery">Chirurgie</string>
+    <string name="dermatology">Dermatologie</string>
+    <string name="internal_medicine">Medicină internă</string>
 
 </resources>

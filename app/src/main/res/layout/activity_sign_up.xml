@@ -5,11 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SignUpActivity">
-    
-    <fragment
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/signUpFragment"
-        android:name="com.example.veterinaryclinic.Fragments.VeterinarianSignUpFragment"/>
+        android:id="@+id/fragment_container"/>
 
 </LinearLayout>
