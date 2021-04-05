@@ -29,6 +29,7 @@ public class OwnerSignUpFragment extends Fragment {
     private static final String VETERINARIAN_STRING = "Medic veterinar";
     private static final String OWNER_STRING = "Stăpân";
 
+    // Empty string
     private static final String EMPTY_STRING = "";
 
     // Error messages

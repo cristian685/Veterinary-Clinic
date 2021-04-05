@@ -33,6 +33,7 @@ public class VeterinarianSignUpFragment extends Fragment {
     private static final String DERMATOLOGY_STRING = "Dermatologie";
     private static final String INTERNAL_MEDICINE_STRING = "Medicină internă";
 
+    // Empty string
     private static final String EMPTY_STRING = "";
 
     // Error messages
