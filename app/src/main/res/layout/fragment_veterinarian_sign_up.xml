@@ -118,7 +118,7 @@
             app:layout_constraintTop_toBottomOf="@+id/specialisationTextView" />
 
         <TextView
-            android:id="@+id/userNameTextView"
+            android:id="@+id/usernameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
@@ -130,7 +130,7 @@
             app:layout_constraintTop_toBottomOf="@+id/specialisationSpinner" />
 
         <EditText
-            android:id="@+id/userNameEditText"
+            android:id="@+id/usernameEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
@@ -142,7 +142,7 @@
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/userNameTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/usernameTextView" />
 
         <TextView
             android:id="@+id/passwordTextView"
@@ -154,7 +154,7 @@
             android:text="@string/password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/userNameEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/usernameEditText" />
 
         <EditText
             android:id="@+id/passwordEditText"
@@ -239,7 +239,7 @@
             app:layout_constraintTop_toBottomOf="@+id/emailEditText" />
 
         <EditText
-            android:id="@+id/phoneEditText"
+            android:id="@+id/phoneNumberEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="67dp"
@@ -253,18 +253,6 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/phoneNumberTextView" />
-
-        <TextView
-            android:id="@+id/errorTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="71dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="272dp"
-            android:textColor="@color/red"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phoneEditText" />
 
         <Button
             android:id="@+id/createVeterinarianButton"
@@ -280,7 +268,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/errorTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/phoneNumberEditText" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

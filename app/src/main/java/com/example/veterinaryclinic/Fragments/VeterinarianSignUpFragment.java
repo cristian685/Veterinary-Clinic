@@ -18,7 +18,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.veterinaryclinic.Adapters.SpinnerAdapter;
+import com.example.veterinaryclinic.Dialogs.NoInternetConnectionDialog;
 import com.example.veterinaryclinic.R;
+import com.example.veterinaryclinic.Utilities.Utility;
+import com.example.veterinaryclinic.Utilities.Validator;
 
 import java.util.ArrayList;
 
@@ -32,21 +35,6 @@ public class VeterinarianSignUpFragment extends Fragment {
     private static final String SURGERY_STRING = "Chirurgie";
     private static final String DERMATOLOGY_STRING = "Dermatologie";
     private static final String INTERNAL_MEDICINE_STRING = "Medicină internă";
-
-    // Empty string
-    private static final String EMPTY_STRING = "";
-
-    // Error messages
-    private static final String EMPTY_NAME_ERROR = "Numele nu poate să lipsească !";
-    private static final String EMPTY_SURNAME_ERROR = "Prenumele nu poate să lipsească !";
-    private static final String EMPTY_USERNAME_ERROR = "Vă rugăm să introduceți un nume de utilizator !";
-    private static final String EMPTY_PASSWORD_ERROR = "Parola nu poate să lipsească !";
-    private static final String SHORT_PASSWORD_ERROR = "Parola trebuie să aibă minim 6 caractere !";
-    private static final String PASSWORD_NOT_EQUALS_ERROR = "Parolele nu coincid !";
-    private static final String EMPTY_EMAIL_ADDRESS_ERROR = "Vă rugăm să introduceți o adresă de email !";
-    private static final String EMPTY_PHONE_NUMBER_ERROR = "Vă rugăm să introduceți un număr de telefon !";
-
-    private static final int MINIM_LENGTH = 6;
 
     private ArrayList<String> accountTypes;
     private ArrayList<String> veterinariansTypes;
@@ -68,9 +56,6 @@ public class VeterinarianSignUpFragment extends Fragment {
 
     // Button
     private Button registerButton;
-
-    // Warning text view
-    private TextView errorTextView;
 
 
     @Nullable
@@ -143,9 +128,6 @@ public class VeterinarianSignUpFragment extends Fragment {
             }
         });
 
-        // Warning text view
-        errorTextView = view.findViewById(R.id.errorTextView);
-
         return view;
     }
 
@@ -161,35 +143,62 @@ public class VeterinarianSignUpFragment extends Fragment {
         String phoneNumber = phoneNumberEditText.getText().toString().trim();
 
         // Verifying the data received from the user
-
-        if (!verifyName(name)){
+        if (!Validator.verifyName(name)){
+            nameEditText.setError(Validator.EMPTY_NAME_ERROR);
             return;
         }
 
-        if (!verifySurname(surname)){
+        if (!Validator.verifySurname(surname)){
+            surnameEditText.setError(Validator.EMPTY_SURNAME_ERROR);
             return;
         }
 
-        if (!verifyUsername(username)){
+        if (!Validator.verifyUsername(username)){
+            usernameEditText.setError(Validator.EMPTY_USERNAME_ERROR);
             return;
         }
 
-        if (!verifyPassword(password)){
+        if (!Validator.isPasswordEmpty(password)){
+            passwordEditText.setError(Validator.EMPTY_PASSWORD_ERROR);
             return;
         }
 
-        if (!verifyConfirmedPassword(password, confirmedPassword)){
+        if (!Validator.isPasswordTooShort(password)){
+            passwordEditText.setError(Validator.SHORT_PASSWORD_ERROR);
             return;
         }
 
-        if (!verifyEmailAddress(emailAddress)){
+        if (!Validator.verifyConfirmedPassword(password, confirmedPassword)){
+            confirmedPasswordEditText.setError(Validator.PASSWORD_NOT_EQUALS_ERROR);
             return;
         }
 
-        if (!verifyPhoneNumber(phoneNumber)){
+        if (!Validator.verifyEmailAddress(emailAddress)){
+            emailEditText.setError(Validator.EMPTY_EMAIL_ADDRESS_ERROR);
             return;
         }
 
+        if (!Validator.validateEmail(emailAddress)){
+            emailEditText.setError(Validator.INVALID_EMAIL_ADDRESS_ERROR);
+            return;
+        }
+
+        if (!Validator.verifyPhoneNumber(phoneNumber)){
+            phoneNumberEditText.setError(Validator.EMPTY_PHONE_NUMBER_ERROR);
+            return;
+        }
+
+        if (!Validator.validatePhoneNumber(phoneNumber)){
+            phoneNumberEditText.setError(Validator.INVALID_PHONE_NUMBER_ERROR);
+            return;
+        }
+
+
+        if (!Utility.isNetworkConnected(getActivity().getApplicationContext())) {
+            NoInternetConnectionDialog noInternetConnectionDialog = new NoInternetConnectionDialog();
+            noInternetConnectionDialog.show(getActivity().getSupportFragmentManager(), Utility.DIALOG);
+            return;
+        }
 
     }
 
@@ -204,96 +213,5 @@ public class VeterinarianSignUpFragment extends Fragment {
         veterinariansTypes.add(DERMATOLOGY_STRING);
         veterinariansTypes.add(INTERNAL_MEDICINE_STRING);
 
-    }
-
-    // FUNCTIONS TO VERIFY THE INPUT DATA
-    private boolean verifyName(String name) {
-        if (name.equals(EMPTY_STRING)){
-            errorTextView.setVisibility(View.VISIBLE);
-            errorTextView.setText(EMPTY_NAME_ERROR);
-
-            return false;
-        }
-
-        errorTextView.setText(EMPTY_STRING);
-        return true;
-    }
-
-    private boolean verifySurname(String surname) {
-        if (surname.equals(EMPTY_STRING)){
-            errorTextView.setVisibility(View.VISIBLE);
-            errorTextView.setText(EMPTY_SURNAME_ERROR);
-
-            return false;
-        }
-        return true;
-    }
-
-
-    private boolean verifyUsername(String username) {
-        if (username.equals(EMPTY_STRING)){
-            errorTextView.setVisibility(View.VISIBLE);
-            errorTextView.setText(EMPTY_USERNAME_ERROR);
-
-            return false;
-        }
-
-        errorTextView.setText(EMPTY_STRING);
-        return true;
-    }
-
-    private boolean verifyPassword(String password) {
-        if (password.equals(EMPTY_STRING)){
-            errorTextView.setVisibility(View.VISIBLE);
-            errorTextView.setText(EMPTY_PASSWORD_ERROR);
-
-            return false;
-        }
-
-        if(password.length() < MINIM_LENGTH){
-            errorTextView.setVisibility(View.VISIBLE);
-            errorTextView.setText(SHORT_PASSWORD_ERROR);
-
-            return false;
-        }
-
-        errorTextView.setText(EMPTY_STRING);
-        return true;
-    }
-
-    private boolean verifyConfirmedPassword(String password,String confirmedPassword) {
-        if(!confirmedPassword.equals(password)){
-            errorTextView.setVisibility(View.VISIBLE);
-            errorTextView.setText(PASSWORD_NOT_EQUALS_ERROR);
-
-            return false;
-        }
-
-        errorTextView.setText(EMPTY_STRING);
-        return true;
-    }
-
-    private boolean verifyEmailAddress(String emailAddress) {
-        if (emailAddress.equals(EMPTY_STRING)){
-            errorTextView.setVisibility(View.VISIBLE);
-            errorTextView.setText(EMPTY_EMAIL_ADDRESS_ERROR);
-
-            return false;
-        }
-
-        errorTextView.setText(EMPTY_STRING);
-        return true;
-    }
-
-    private boolean verifyPhoneNumber(String phoneNumber) {
-        if (phoneNumber.equals(EMPTY_STRING)){
-            errorTextView.setVisibility(View.VISIBLE);
-            errorTextView.setText(EMPTY_PHONE_NUMBER_ERROR);
-
-            return false;
-        }
-
-        errorTextView.setText(EMPTY_STRING);
-        return true;
     }
 }
