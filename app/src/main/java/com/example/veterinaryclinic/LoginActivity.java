@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -56,10 +57,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(!checkIfAnyAccountDetailIsEmpty(userNameEditText.getText().toString(),passwordEditText.getText().toString())){
-
+                    Intent intent = new Intent(LoginActivity.this, MapActivity.class);
+                    startActivity(intent);
                 }
             }
         });
+
 
         emptyUserNameTextView = findViewById(R.id.emptyUserNameTextView);
         emptyPasswordTextView = findViewById(R.id.emptyPasswordTextView);
